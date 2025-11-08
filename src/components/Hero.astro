@@ -1,0 +1,158 @@
+---
+import tick from "../assets/tick.png";
+---
+<div id="hero-container" class="flex flex-wrap p-16 pt-24 w-full gap-24 bg-[#121212]">
+    <div id="Top5" class="flex flex-col items-center justify-center h-3/4 w-3/5 gap-4 p-8 bg-[#1E1E1E] rounded-4xl">
+        <h1 class="text-4xl font-bold text-center mb-2 color-white text-white">Top 5</h1>
+        <table class="w-full h-3/4">
+            <tr class="h-16">
+                <!-- Celda número + nombre -->
+                <td class="flex items-center gap-3 px-6 py-2">
+                <!-- Número dentro de un círculo -->
+                    <div class="w-10 h-10 flex items-center justify-center text-white text-2xl font-bold">
+                    1
+                    </div>
+                    <!-- Nombre -->
+                    <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                    Adrián Lamama
+                    </div>
+                </td>
+                <td class="flex items-center gap-3 px-6 py-2">
+                    <!-- Número dentro de un círculo -->
+                    <div class=" w-10 h-10 flex items-center justify-center text-white text-2xl font-bold">
+                    2
+                    </div>
+                    <!-- Nombre -->
+                    <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                    Adrián Lamama
+                    </div>
+                </td>
+                <td class="flex items-center gap-3 px-6 py-2">
+                    <!-- Número dentro de un círculo -->
+                        <div class="w-10 h-10 flex items-center justify-center text-white text-2xl font-bold">
+                        3
+                        </div>
+                        <!-- Nombre -->
+                        <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                        Adrián Lamama
+                        </div>
+                    </td>
+                    <td class="flex items-center gap-3 px-6 py-2">
+                        <!-- Número dentro de un círculo -->
+                        <div class="w-10 h-10 flex items-center justify-center text-white text-2xl font-bold">
+                        4
+                        </div>
+                        <!-- Nombre -->
+                        <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                        Adrián Lamama
+                        </div>
+                    </td>
+                    <td class="flex items-center gap-3 px-6 py-2">
+                        <!-- Número dentro de un círculo -->
+                        <div class="w-10 h-10 flex items-center justify-center text-white text-2xl font-bold">
+                        5
+                        </div>
+                        <!-- Nombre -->
+                        <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                        Adrián Lamama
+                        </div>
+                    </td>
+            </tr>
+        </table>
+    </div>
+    <div id="Vota" class="flex flex-col items-center justify-center w-[300px] gap-4 p-8 bg-[#00BFA6] rounded-4xl">
+        <h2 class="text-2xl font-bold  rounded-2xl"><img src={tick.src} alt="Tick"></h2>
+        <button id="vota-button" class="w-full bg-[#1DE9B6] h-10 rounded-2xl hover:bg-[#00997A] text-white text-2xl font-semibold ">Vota</button>
+    </div>
+    <div id="Tabla" class="w-full flex flex-col gap-4 p-8 bg-[#1E1E1E] rounded-4xl">
+        <table class="w-full border-collapse">
+            <thead>
+                <tr class="border-b-2 border-[#2E2E2E]">
+                    <th class="text-left py-4 px-6 text-white text-xl font-bold">#</th>
+                    <th class="text-left py-4 px-6 text-white text-xl font-bold">Nombre</th>
+                    <th class="text-right py-4 px-6 text-white text-xl font-bold">Puntos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-[#1E1E1E] border-b border-[#2E2E2E]">
+                    <td class="py-4 px-6 text-white text-lg font-semibold">1</td>
+                    <td class="py-4 px-6 text-white text-lg">Adrián Lamama</td>
+                    <td class="py-4 px-6 text-right text-[#00E676] text-lg font-bold">1250</td>
+                </tr>
+                <tr class="bg-[#181818] border-b border-[#2E2E2E]">
+                    <td class="py-4 px-6 text-white text-lg font-semibold">2</td>
+                    <td class="py-4 px-6 text-white text-lg">María García</td>
+                    <td class="py-4 px-6 text-right text-[#00E676] text-lg font-bold">1180</td>
+                </tr>
+                <tr class="bg-[#1E1E1E] border-b border-[#2E2E2E]">
+                    <td class="py-4 px-6 text-white text-lg font-semibold">3</td>
+                    <td class="py-4 px-6 text-white text-lg">Carlos Ruiz</td>
+                    <td class="py-4 px-6 text-right text-[#00E676] text-lg font-bold">1100</td>
+                </tr>
+                <tr class="bg-[#181818] border-b border-[#2E2E2E]">
+                    <td class="py-4 px-6 text-white text-lg font-semibold">4</td>
+                    <td class="py-4 px-6 text-white text-lg">Laura Martínez</td>
+                    <td class="py-4 px-6 text-right text-white text-lg">950</td>
+                </tr>
+                <tr class="bg-[#1E1E1E] border-b border-[#2E2E2E]">
+                    <td class="py-4 px-6 text-white text-lg font-semibold">5</td>
+                    <td class="py-4 px-6 text-white text-lg">Juan Pérez</td>
+                    <td class="py-4 px-6 text-right text-white text-lg">880</td>
+                </tr>
+                <tr class="bg-[#181818] border-b border-[#2E2E2E]">
+                    <td class="py-4 px-6 text-white text-lg font-semibold">6</td>
+                    <td class="py-4 px-6 text-white text-lg">Ana López</td>
+                    <td class="py-4 px-6 text-right text-white text-lg">720</td>
+                </tr>
+                <tr class="bg-[#1E1E1E] border-b border-[#2E2E2E]">
+                    <td class="py-4 px-6 text-white text-lg font-semibold">7</td>
+                    <td class="py-4 px-6 text-white text-lg">Pedro Sánchez</td>
+                    <td class="py-4 px-6 text-right text-white text-lg">650</td>
+                </tr>
+                <tr class="bg-[#181818]">
+                    <td class="py-4 px-6 text-white text-lg font-semibold">8</td>
+                    <td class="py-4 px-6 text-white text-lg">Sofía Torres</td>
+                    <td class="py-4 px-6 text-right text-white text-lg">580</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="SuperVotos" class="w-full h-3/4 flex mt-8 flex-col gap-4 p-8 bg-[#1E1E1E] rounded-4xl">
+        <h2 class="text-4xl font-bold text-center mb-4 text-white">Super Votos</h2>
+        <div class="flex flex-row items-center justify-center gap-8 h-full">
+            <div class="flex flex-col items-center gap-4 flex-1">
+                <div class="w-full h-64 bg-[#181818] rounded-2xl flex items-center justify-center overflow-hidden">
+                    <img src="https://via.placeholder.com/300x400" alt="Persona 1" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex items-center justify-center w-full px-4 py-2 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold text-lg">
+                    Persona 1
+                </div>
+            </div>
+            <div class="flex flex-col items-center gap-4 flex-1">
+                <div class="w-full h-64 bg-[#181818] rounded-2xl flex items-center justify-center overflow-hidden">
+                    <img src="https://via.placeholder.com/300x400" alt="Persona 2" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex items-center justify-center w-full px-4 py-2 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold text-lg">
+                    Persona 2
+                </div>
+            </div>
+            <div class="flex flex-col items-center gap-4 flex-1">
+                <div class="w-full h-64 bg-[#181818] rounded-2xl flex items-center justify-center overflow-hidden">
+                    <img src="https://via.placeholder.com/300x400" alt="Persona 3" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex items-center justify-center w-full px-4 py-2 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold text-lg">
+                    Persona 3
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    const vota = document.getElementById("vota-button");
+
+    vota?.addEventListener('click', () => {
+        window.location.href = "/vota";
+    });
+</script>
