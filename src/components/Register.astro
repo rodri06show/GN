@@ -33,6 +33,16 @@
         />
       </div>
 
+      <div class="flex flex-col gap-2">
+        <label for="reg-phone" class="text-white text-lg font-semibold">Numero de Telefono</label>
+        <input
+          type="text"
+          id="reg-phone"
+          class="w-full px-4 py-2 rounded-xl bg-[#181818] text-white border border-[#2E2E2E] focus:border-[#00BFA6] focus:outline-none"
+          placeholder="Numero de telefono"
+        />
+      </div>
+
       <button
         type="submit"
         id="register-button"
@@ -51,3 +61,48 @@
   </div>
 </div>
 
+<script>
+  const registerForm = document.getElementById('register-form');
+  const numTelefonos = [722134866, 645549062];
+
+
+  registerForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById('reg-username');
+    const password = document.getElementById('reg-password');
+    const passwordConfirm = document.getElementById('reg-password-confirm');
+    const phone = document.getElementById('reg-phone');
+
+    const usernameValue = username instanceof HTMLInputElement ? username.value.trim() : "";
+    const passwordValue = password instanceof HTMLInputElement ? password.value : ""; 
+    const passwordConfirmValue = passwordConfirm instanceof HTMLInputElement ? passwordConfirm.value : "";
+    const phoneValue = phone instanceof HTMLInputElement ? phone.value.trim() : "";
+
+    if (passwordValue !== passwordConfirmValue) {
+      alert('Las contraseñas no coinciden.');
+      return;
+    }
+    if (!numTelefonos.includes(parseInt(phoneValue))) {
+      alert('Este numero de telefono no esta registrado en nuestra base de datos.');
+      return;
+    }
+
+    const response = await fetch('/apis/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: usernameValue, password: passwordValue, phone: phoneValue }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert('Registro exitoso. Redirigiendo al inicio de sesión.');
+      window.location.href = '/login';
+    } else {
+      alert(`Error en el registro: ${result.message}`);
+    }
+  });
+</script>
