@@ -1,7 +1,8 @@
 # Astro Starter Kit: Basics
 
 ```sh
-pnpm create astro@latest -- --template basics
+pnpm add -D astro@latest
+pnpm add -D @astrojs/tailwind
 ```
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
