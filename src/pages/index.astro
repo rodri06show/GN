@@ -2,9 +2,27 @@
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
+
+import jwt from "jsonwebtoken";
+import cookie from "cookie";
+
+const SECRET = import.meta.env.CLAVE_SECRETA;
+
+const cookies = cookie.parse(Astro.request.headers.get("cookie") ?? "");
+const token = cookies.auth;
+
+let user: { username: string; role: string } | null = null;
+
+if (token) {
+  try {
+    user = jwt.verify(token, SECRET) as any;
+  } catch {
+    user = null;
+  }
+}
 ---
 
 <Layout>
-	<Header />
-	<Hero />
+	<Header user={user} />
+	<Hero user={user} />
 </Layout>

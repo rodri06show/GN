@@ -70,11 +70,13 @@
             body: JSON.stringify({ username, password }),
         });
 
-        if (response.ok) {
-            // Redirect to dashboard or home page upon successful login
-            window.location.href = '/';
-        } else {
-            alert('Error al iniciar sesión. Por favor, verifica tus credenciales.');
-        }
+        const data = await response.json();
+
+        if (!response.ok) {
+    alert(data.error);
+  return;
+}
+
+        window.location.href = "/"; // Redirigir a la página principal después del login exitoso
     });
 </script>

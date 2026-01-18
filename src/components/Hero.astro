@@ -1,49 +1,54 @@
 ---
 import tick from "../assets/tick.png";
+const { user } = Astro.props as {
+    user: { username: string; role: string } | null;
+};
 ---
+
+
 <div id="hero-container" class="flex flex-wrap p-16 pt-24 w-full gap-24 bg-[#121212]">
-    <div id="Top5" class="flex flex-col items-center justify-center h-3/4 w-3/5 gap-4 p-8 bg-[#1E1E1E] rounded-4xl">
+    <div id="Top5" class="flex flex-col items-center justify-center h-3/4 w-3/5 gap-4 p-8 bg-[#1E1E1E] rounded-3xl">
         <h1 class="text-4xl font-bold text-center mb-2 color-white text-white">Top 5</h1>
         <table class="w-full h-3/4">
             <tr class="h-16">
                 <!-- Celda número + nombre -->
-                <td class="flex items-center gap-3 px-6 py-2">
+                <td  class="flex items-center gap-3 px-6 py-2">
                 <!-- Número dentro de un círculo -->
                     <div class="w-10 h-10 flex items-center justify-center text-white text-2xl font-bold">
                     1
                     </div>
                     <!-- Nombre -->
-                    <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                    <div id="first" class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
                     Adrián Lamama
                     </div>
                 </td>
-                <td class="flex items-center gap-3 px-6 py-2">
+                <td  class="flex items-center gap-3 px-6 py-2">
                     <!-- Número dentro de un círculo -->
                     <div class=" w-10 h-10 flex items-center justify-center text-white text-2xl font-bold">
                     2
                     </div>
                     <!-- Nombre -->
-                    <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                    <div id="second" class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
                     Adrián Lamama
                     </div>
                 </td>
-                <td class="flex items-center gap-3 px-6 py-2">
+                <td  class="flex items-center gap-3 px-6 py-2">
                     <!-- Número dentro de un círculo -->
                         <div class="w-10 h-10 flex items-center justify-center text-white text-2xl font-bold">
                         3
                         </div>
                         <!-- Nombre -->
-                        <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                        <div id="third" class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
                         Adrián Lamama
                         </div>
                     </td>
-                    <td class="flex items-center gap-3 px-6 py-2">
+                    <td  class="flex items-center gap-3 px-6 py-2">
                         <!-- Número dentro de un círculo -->
                         <div class="w-10 h-10 flex items-center justify-center text-white text-2xl font-bold">
                         4
                         </div>
                         <!-- Nombre -->
-                        <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                        <div id="fourth" class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
                         Adrián Lamama
                         </div>
                     </td>
@@ -53,18 +58,18 @@ import tick from "../assets/tick.png";
                         5
                         </div>
                         <!-- Nombre -->
-                        <div class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
+                        <div id="fifth" class="flex items-center justify-center w-full px-3 py-1 rounded-full bg-[#00BFA6] text-[#E0E0E0] font-semibold">
                         Adrián Lamama
                         </div>
                     </td>
             </tr>
         </table>
     </div>
-    <div id="Vota" class="flex flex-col items-center justify-center w-[300px] gap-4 p-8 bg-[#00BFA6] rounded-4xl">
+    <div id="Vota" class="flex flex-col items-center justify-center w-[300px] gap-4 p-8 bg-[#00BFA6] rounded-3xl">
         <h2 class="text-2xl font-bold  rounded-2xl"><img src={tick.src} alt="Tick"></h2>
         <button id="vota-button" class="w-full bg-[#1DE9B6] h-10 rounded-2xl hover:bg-[#00997A] text-white text-2xl font-semibold ">Vota</button>
     </div>
-    <div id="Tabla" class="w-full flex flex-col gap-4 p-8 bg-[#1E1E1E] rounded-4xl">
+    <div id="Tabla" class="w-full flex flex-col gap-4 p-8 bg-[#1E1E1E] rounded-3xl">
         <table class="w-full border-collapse">
             <thead>
                 <tr class="border-b-2 border-[#2E2E2E]">
@@ -73,8 +78,8 @@ import tick from "../assets/tick.png";
                     <th class="text-right py-4 px-6 text-white text-xl font-bold">Puntos</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="bg-[#1E1E1E] border-b border-[#2E2E2E]">
+            <tbody id ="tabla">
+            <!--     <tr class="bg-[#1E1E1E] border-b border-[#2E2E2E]">
                     <td class="py-4 px-6 text-white text-lg font-semibold">1</td>
                     <td class="py-4 px-6 text-white text-lg">Adrián Lamama</td>
                     <td class="py-4 px-6 text-right text-[#00E676] text-lg font-bold">1250</td>
@@ -113,11 +118,11 @@ import tick from "../assets/tick.png";
                     <td class="py-4 px-6 text-white text-lg font-semibold">8</td>
                     <td class="py-4 px-6 text-white text-lg">Sofía Torres</td>
                     <td class="py-4 px-6 text-right text-white text-lg">580</td>
-                </tr>
+                </tr>-->
             </tbody>
         </table>
     </div>
-    <div id="SuperVotos" class="w-full h-3/4 flex mt-8 flex-col gap-4 p-8 bg-[#1E1E1E] rounded-4xl">
+    <div id="SuperVotos" class="w-full h-3/4 flex mt-8 flex-col gap-4 p-8 bg-[#1E1E1E] rounded-3xl">
         <h2 class="text-4xl font-bold text-center mb-4 text-white">Super Votos</h2>
         <div class="flex flex-row items-center justify-center gap-8 h-full">
             <div class="flex flex-col items-center gap-4 flex-1">
@@ -148,9 +153,42 @@ import tick from "../assets/tick.png";
     </div>
 </div>
 
-<script>
+<script define:vars={{user}}>
     
     const vota = document.getElementById("vota-button");
+    
+    const response = await fetch('/api/auth/top.ts', {
+            method: 'POST',
+        });
+    
+        const topUsers = await response.json();
+
+    const ids = ["first", "second", "third", "fourth", "fifth"];
+    ids.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if(el) el.textContent = topUsers[i]?.username ?? "";
+    });
+
+    const tabla = document.getElementById("tabla");
+    if(tabla){
+        topUsers.forEach((u, i) => {
+            const row = document.createElement("tr");
+            row.className = index % 2 === 0 ? "bg-[#1E1E1E] border-b border-[#2E2E2E]" : "bg-[#181818] border-b border-[#2E2E2E]";
+            row.innerHTML = `
+                <td class="py-4 px-6 text-white text-lg font-semibold">${index + 1}</td>
+                <td class="py-4 px-6 text-white text-lg">${user.username}</td>
+                <td class="py-4 px-6 text-right ${user.points > 0 ? 'text-[#00E676]' : 'text-white'} text-lg font-bold">${user.points}</td>
+            `;
+            tabla.appendChild(row);
+        });
+    }
+
+
+    if(user != null){
+        vota?.removeAttribute('disabled');
+    } else {
+        vota?.setAttribute('disabled', 'true');
+    }
 
     vota?.addEventListener('click', () => {
         window.location.href = "/vota";

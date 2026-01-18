@@ -1,6 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import VotaPage from '../components/Vota.astro';
+
+import jwt from "jsonwebtoken";
+import cookie from "cookie";
+
+const SECRET = import.meta.env.CLAVE_SECRETA;
+
+const cookies = cookie.parse(Astro.request.headers.get("cookie") ?? "");
+const token = cookies.auth;
+
+let user: { id: number; role: string } | null = null;
+
+if (token) {
+  try {
+    user = jwt.verify(token, SECRET) as any;
+  } catch {
+    user = null;
+  }
+}
 ---
 
 <Layout title="Vota">

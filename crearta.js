@@ -34,6 +34,7 @@ votos.prepare(`
   )
 `).run();
 
+// Crear tabla de teléfonos
 tel.prepare(`
   CREATE TABLE IF NOT EXISTS phones (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,34 +42,4 @@ tel.prepare(`
   )
 `).run();
 
-export { usuarios };
-export { votos };
-export { tel };
-
-export type user = {
-  id: number;
-  username: string;
-  password: string;
-  role: string;
-  points: number;
-  phone: string;
-};
-export type vote = {
-  id: number;
-  voter_id: number;
-  voted1_id: number;
-  voted2_id: number;
-  voted3_id: number;
-  voted4_id: number;
-  voted5_id: number;
-  voted6_id: number;
-  voted7_id: number;
-  voted8_id: number;
-  voted9_id: number;
-  voted10_id: number;
-};
-
-export type phone = {
-  id: number;
-  phone: string;
-};
+console.log("Tablas creadas correctamente");

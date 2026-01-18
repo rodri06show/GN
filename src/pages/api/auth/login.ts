@@ -1,34 +1,58 @@
 // src/pages/api/auth/login.ts
 import type { APIRoute } from "astro";
-import { db, type User } from "../../../lib/db";
+import { usuarios, type user } from "../../../lib/db";
 import bcrypt from "bcrypt";
-import { createToken } from "../../../lib/auth";
+import jwt from "jsonwebtoken";
+
+const clave = import.meta.env.CLAVE_SECRETA;
+
+type DBUser = {
+  id: number;
+  username: string;
+  password: string;
+  role: string;
+};
 
 export const POST: APIRoute = async ({ request }) => {
   const { username, password } = await request.json();
 
-  // Tipamos el usuario que recibimos desde SQLite
-  const user = db
-    .prepare("SELECT * FROM users WHERE username = ?")
-    .get(username) as User | undefined;
+    const stmt = usuarios.prepare<[string], DBUser>(`
+    SELECT id, username, password, role
+    FROM users
+    WHERE username = ?
+  `);
 
+  const user = stmt.get(username);
+  
   if (!user) {
-    return new Response("User not found", { status: 404 });
+    return new Response(JSON.stringify({ error: "Usuario no encontrado" }), { status: 404 });
   }
 
-  const valid = await bcrypt.compare(password, user.password);
-  if (!valid) {
-    return new Response("Invalid credentials", { status: 401 });
+  const passwordMatch = await bcrypt.compare(password, user.password);
+  if (!passwordMatch) {
+    return new Response(JSON.stringify({ error: "Contraseña incorrecta" }), { status: 401 });
   }
 
-  // Aquí le pasamos el nombre + rol al token
-  const token = createToken({ username: user.username, role: user.role });
+  const token = jwt.sign(
+    { id: user.id, role: user.role },
+    clave.CLAVE_SECRETA,
+    { expiresIn: "1d" }
+  );
 
-  return new Response(JSON.stringify({ success: true }), {
-    status: 200,
-    headers: {
-      "Set-Cookie": `token=${token}; HttpOnly; Path=/; Max-Age=604800`,
-      "Content-Type": "application/json",
-    },
-  });
+  return new Response(
+    JSON.stringify({
+      ok: true,
+      user: {
+        id: user.id,
+        username: user.username,
+        role: user.role
+      }
+    }),
+    {
+      headers: {
+        "Set-Cookie": `auth=${token}; HttpOnly; Path=/; SameSite=Strict`
+      }
+    }
+  );
+
 };

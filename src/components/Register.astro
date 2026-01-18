@@ -63,7 +63,6 @@
 
 <script>
   const registerForm = document.getElementById('register-form');
-  const numTelefonos = [722134866, 645549062];
 
 
   registerForm?.addEventListener('submit', async (e) => {
@@ -81,10 +80,6 @@
 
     if (passwordValue !== passwordConfirmValue) {
       alert('Las contraseñas no coinciden.');
-      return;
-    }
-    if (!numTelefonos.includes(parseInt(phoneValue))) {
-      alert('Este numero de telefono no esta registrado en nuestra base de datos.');
       return;
     }
 
